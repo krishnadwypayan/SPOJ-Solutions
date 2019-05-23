@@ -20,27 +20,24 @@ typedef pair<ll, ll> pll;
 
 
 int main() {
-    while (true) {
-        int n;
-        cin >> n;
-        if (!n) break;
-        stack<int> s;
-        bool ans = true;
-        int a, need = 1;
-        rep(i, 0, n) {
-            cin >> a;
-            if (!ans) continue;
-            while (!s.empty() && s.top() == need) {
-                need++;
-                s.pop();
-            }
-            if (a == need) need++;
-            else if (!s.empty() && s.top() < a) ans = false;
-            else s.push(a);
+    int t;
+    cin >> t;
+    cout << endl;
+    while (t--) {
+        int ng, nm;
+        cin >> ng >> nm;
+        int a = INT32_MIN, b = INT32_MIN, input;
+        rep(i, 0, ng) {
+            cin >> input;
+            a = max(input, a);
+        }
+        rep(i, 0, nm) {
+            cin >> input;
+            b = max(input, b);
         }
 
-        if (!ans) cout << "no" << endl;
-        else cout << "yes" << endl;
+        if (a >= b) cout << "Godzilla" << endl;
+        else cout << "MechaGodzilla" << endl;
     }
     
     return 0;
